@@ -17,7 +17,9 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-firestore.js"></script>
     <script type="text/javascript" src="/auth.js"></script>
+    <script type="text/javascript" src="/account.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -40,62 +42,28 @@
           <button onclick="prompt_name_change()">
             Change Username
           </button>
+          <span id="uerror" class="error"></span><br /><br />
+          <button id="email_cancel" onclick="cancel_email_change()" hidden>
+            Cancel
+          </button>
+          <input id="epassword" type="password" placeholder="Current Password" onkeypress="process_in_email_field(event)" hidden />
+          <input id="email" type="text" placeholder="Email" onkeypress="process_in_email_field(event)" hidden />
+          <button onclick="prompt_email_change()">
+            Change Email
+          </button>
+          <span id="eerror" class="error"></span><br /><br />
+          <button id="password_cancel" onclick="cancel_password_change()" hidden>
+            Cancel
+          </button>
+          <input id="ppassword" type="password" placeholder="Current Password" onkeypress="process_in_email_field(event)" hidden />
+          <input id="password" type="password" placeholder="Password" onkeypress="process_in_password_field(event)" hidden />
+          <input id="rpassword" type="password" placeholder="Repeat Password" onkeypress="process_in_password_field(event)" hidden />
+          <button onclick="prompt_password_change()">
+            Change Password
+          </button>
+          <span id="perror" class="error"></span><br /><br />
         </div>
       </div>
     </div>
   </body>
-  
-  <script type="text/javascript">
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        document.getElementById("content").hidden = false;
-        if (window.location.hash) {
-          user.updateProfile({
-            displayName: window.location.hash.slice(1)
-          }).then(function() {
-            document.getElementById("welcome").innerHTML = "Welcome, " + user.displayName + "!";
-          });
-        } else {
-          document.getElementById("welcome").innerHTML = "Welcome, " + user.displayName + "!";
-        }
-      } else {
-        window.open("/login.html", "_self");
-      }
-    });
-    
-    var changing_name = false;
-    
-    function process_in_name_field(event) {
-      if (event.keyCode == 13) {
-        prompt_name_change();
-      }
-    }
-    
-    function prompt_name_change() {
-      if (changing_name) {
-        firebase.auth().currentUser.updateProfile({
-          displayName: document.getElementById("username").value
-        }).then(function() {
-          document.getElementById("welcome").innerHTML = "Welcome, " + firebase.auth().currentUser.displayName + "!";
-          document.getElementById("username").value = "";
-          document.getElementById("username").hidden = true;
-          document.getElementById("name_cancel").hidden = true;
-          changing_name = false;
-        }, function(error) {
-          alert(error.message);
-        });
-      } else {
-        document.getElementById("username").hidden = false;
-        document.getElementById("name_cancel").hidden = false;
-        changing_name = true;
-      }
-    }
-    
-    function cancel_name_change() {
-      document.getElementById("username").value = "";
-      document.getElementById("username").hidden = true;
-      document.getElementById("name_cancel").hidden = true;
-      changing_name = false;
-    }
-  </script>
 </html>

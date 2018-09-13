@@ -17,6 +17,7 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-firestore.js"></script>
     <script type="text/javascript" src="/auth.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,11 +29,20 @@
       <nav id="anon" class="navbar"><a class="navbutton" href="/index.html">Home</a><a class="navcurr" href="/creator.html">Creator</a><a class="navbutton" href="/about.html">About</a><a class="navbutton" href="/login.html">Sign In</a><a class="navbutton" href="/signup.html">Sign Up</a></nav>
       <nav id="user" class="navbar" hidden><a class="navbutton" href="/index.html">Home</a><a class="navcurr" href="/creator.html">Creator</a><a class="navbutton" href="/about.html">About</a><a class="navbutton" href="/account.html">Account</a></nav>
       <h1 class="header caps">
-        Soundtrack Creator</span>
+        Soundtrack Creator
       </h1>
-      <p class="main">
-        
-      </p>
+      <h3 id="signin_note">
+        Sign in to view your soundtracks!
+      </h3>
+      <div class="outerwrapper">
+        <div class="scrollwrapper">
+          <div id="tracks" class="tracks">
+            <button id="addnew" class="track">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

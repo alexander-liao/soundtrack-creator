@@ -26,9 +26,7 @@ function login() {
         em = "Wrong password.";
         break;
     }
-    if (em) {
-      document.getElementById("errorslot").innerHTML = em;
-    }
+    document.getElementById("errorslot").innerHTML = em || "An unknown error occurred. Try again later";
   });
 }
 
@@ -64,9 +62,7 @@ function signup() {
           em = "The password is too weak.";
           break;
       }
-      if (em) {
-        document.getElementById("errorslot").innerHTML = em;
-      }
+      document.getElementById("errorslot").innerHTML = em || "An unknown error occurred. Try again later";
     });
   } else {
     document.getElementById("errorslot").innerHTML = "Passwords do not match!";

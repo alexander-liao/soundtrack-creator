@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 5vh 20vw 5vh 20vw;
   background-color: #333;
+  font-family: "Roboto Slab", serif;
   color: #eee;
 }
 
@@ -46,7 +47,7 @@ p {
   font-family: "Roboto Slab", serif;
 }
 
-#errorslot {
+.error {
   color: #f55;
 }
 
@@ -78,7 +79,7 @@ p {
 }
 
 button:focus {
-  outline: 0;
+  outline: none;
 }
 
 .navbar {
@@ -126,4 +127,46 @@ button:hover {
 
 button:active {
   background-color: #666;
+}
+
+.outerwrapper {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-right: 1vw;
+  background-color: #444;
+}
+
+.scrollwrapper {
+  width: 60vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  background-color: #444;
+}
+
+.tracks {
+  width: 80vw;
+  background-color: #444;
+  display: table;
+  margin-right: 1vw;
+}
+
+button.track {
+  height: 100px;
+  background-color: #333333;
+  width: 250px;
+  display: table-cell;
+  font-family: monospace;
+  font-size: 120%;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: center;
+  margin-left: 1vw;
+}
+
+button.track:hover {
+  background-color: #3a3a3a;
+}
+
+button.track:active {
+  background-color: #444;
 }
